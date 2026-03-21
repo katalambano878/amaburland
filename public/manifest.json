@@ -1,7 +1,7 @@
 {
-  "name": "MultiMey Supplies",
-  "short_name": "MultiMey",
-  "description": "Shop dresses, electronics, bags, shoes and more at MultiMey Supplies. Quality products delivered across Ghana.",
+  "name": "DIYA'S ORGANICS",
+  "short_name": "DIYA'S ORGANICS",
+  "description": "Ayurvedic-inspired hair care using herbs from Africa, India and the Middle East for stronger, thicker, healthier hair.",
   "start_url": "/?source=pwa",
   "scope": "/",
   "display": "standalone",
@@ -13,7 +13,7 @@
   "categories": [
     "shopping",
     "lifestyle",
-    "fashion"
+    "beauty"
   ],
   "icons": [
     {
@@ -75,12 +75,6 @@
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"
-    },
-    {
-      "src": "/logo.png",
-      "sizes": "any",
-      "type": "image/png",
-      "purpose": "any"
     }
   ],
   "shortcuts": [

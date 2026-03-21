@@ -16,10 +16,10 @@ interface SEOProps {
 }
 
 export function generateMetadata({
-  title = 'Premium Online Shopping in Ghana',
-  description = 'Shop dresses, electronics, bags, shoes and more at MultiMey Supplies. Locally sourced and imported quality products delivered across Ghana.',
+  title = "DIYA'S ORGANICS – Ayurvedic hair care",
+  description = 'Diya Organics crafts Ayurvedic-inspired hair care with herbs from Africa, India and the Middle East to help your hair grow stronger, thicker and healthier.',
   keywords = [],
-  ogImage = 'https://readdy.ai/api/search-image?query=modern%20premium%20ecommerce%20online%20shopping%20platform%20elegant%20design&width=1200&height=630&seq=ogimage&orientation=landscape',
+  ogImage,
   ogType = 'website',
   price,
   currency = 'GHS',
@@ -29,17 +29,19 @@ export function generateMetadata({
   author,
   noindex = false
 }: SEOProps): Metadata {
-  const siteName = 'PremiumShop Ghana';
-  const siteUrl = 'https://premiumshop.com';
+  const siteUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://example.com';
+  const defaultOgImage = `${siteUrl}/OG.jpg`;
+  const resolvedOgImage = ogImage || defaultOgImage;
+  const siteName = "DIYA'S ORGANICS";
   const fullTitle = title.includes(siteName) ? title : `${title} | ${siteName}`;
 
   const defaultKeywords = [
-    'online shopping ghana',
-    'premium products ghana',
-    'buy online ghana',
-    'ecommerce ghana',
-    'fast delivery ghana',
-    'secure shopping'
+    'Diya Organics',
+    "DIYAS ORGANICS",
+    'Ayurvedic hair care',
+    'natural hair growth',
+    'stronger thicker hair',
+    'African Ayurvedic herbs'
   ];
 
   const allKeywords = [...new Set([...keywords, ...defaultKeywords])];
@@ -52,7 +54,7 @@ export function generateMetadata({
     openGraph: {
       title: fullTitle,
       description,
-      images: [{ url: ogImage, width: 1200, height: 630, alt: title }],
+      images: [{ url: resolvedOgImage, width: 1200, height: 630, alt: title }],
       type: ogType as any,
       siteName,
       locale: 'en_GH'
@@ -61,7 +63,7 @@ export function generateMetadata({
       card: 'summary_large_image',
       title: fullTitle,
       description,
-      images: [ogImage]
+      images: [resolvedOgImage]
     },
     robots: noindex ? {
       index: false,
@@ -114,7 +116,7 @@ export function generateProductSchema(product: {
     sku: product.sku,
     brand: {
       '@type': 'Brand',
-      name: product.brand || 'PremiumShop'
+      name: product.brand || "DIYA'S ORGANICS"
     },
     offers: {
       '@type': 'Offer',
@@ -159,38 +161,31 @@ export function generateBreadcrumbSchema(items: { name: string; url: string }[])
 }
 
 export function generateOrganizationSchema() {
+  const siteUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://example.com';
   return {
     '@context': 'https://schema.org',
     '@type': 'Organization',
-    name: 'PremiumShop Ghana',
-    url: 'https://premiumshop.com',
-    logo: 'https://readdy.ai/api/search-image?query=premium%20shop%20logo%20elegant%20modern&width=200&height=200&seq=logo&orientation=squarish',
-    contactPoint: {
-      '@type': 'ContactPoint',
-      telephone: '+233-XX-XXX-XXXX',
-      contactType: 'Customer Service',
-      areaServed: 'GH',
-      availableLanguage: ['English']
-    },
+    name: "DIYA'S ORGANICS",
+    url: siteUrl,
     sameAs: [
-      'https://facebook.com/premiumshop',
-      'https://instagram.com/premiumshop',
-      'https://twitter.com/premiumshop'
+      'https://www.instagram.com/diya_organics',
+      'https://x.com/DiyaOrganics'
     ]
   };
 }
 
 export function generateWebsiteSchema() {
+  const siteUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://example.com';
   return {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    name: 'PremiumShop Ghana',
-    url: 'https://premiumshop.com',
+    name: "DIYA'S ORGANICS",
+    url: siteUrl,
     potentialAction: {
       '@type': 'SearchAction',
       target: {
         '@type': 'EntryPoint',
-        urlTemplate: 'https://premiumshop.com/shop?search={search_term_string}'
+        urlTemplate: `${siteUrl}/shop?search={search_term_string}`
       },
       'query-input': 'required name=search_term_string'
     }
