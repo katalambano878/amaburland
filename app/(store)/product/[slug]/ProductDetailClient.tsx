@@ -1,4 +1,5 @@
 'use client';
+import { money } from '@/lib/format-money';
 
 import Link from 'next/link';
 import Image from 'next/image';
@@ -365,13 +366,13 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
                 <div className="flex items-baseline space-x-3 mb-8">
                   {hasVariants && !selectedVariant ? (
                     <span className="text-2xl lg:text-[30px] font-medium text-gray-900">
-                      <span className="text-lg text-gray-400 font-light mr-1.5">From</span>GH₵{minVariantPrice.toFixed(2)}
+                      <span className="text-lg text-gray-400 font-light mr-1.5">From</span>GH₵{money(minVariantPrice)}
                     </span>
                   ) : (
-                    <span className="text-2xl lg:text-[30px] font-medium text-gray-900">GH₵{activePrice.toFixed(2)}</span>
+                    <span className="text-2xl lg:text-[30px] font-medium text-gray-900">GH₵{money(activePrice)}</span>
                   )}
                   {product.compare_at_price && product.compare_at_price > activePrice && (
-                    <span className="text-lg text-gray-400 line-through decoration-gray-300">GH₵{product.compare_at_price.toFixed(2)}</span>
+                    <span className="text-lg text-gray-400 line-through decoration-gray-300">GH₵{money(product.compare_at_price)}</span>
                   )}
                 </div>
 
@@ -473,7 +474,7 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
                               >
                                 <span className="text-[14px]">{variant.name}</span>
                                 <span className={`text-[11px] mt-0.5 ${isSelected ? 'text-gray-500' : 'text-gray-400'}`}>
-                                  GH₵{(variant.price || product.price).toFixed(2)}
+                                  GH₵{money((variant.price || product.price))}
                                 </span>
                               </button>
                             );
@@ -515,7 +516,7 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
                               >
                                 <span className="text-[14px]">{variant.name}</span>
                                 <span className={`text-[11px] mt-0.5 ${isSelected ? 'text-gray-500' : 'text-gray-400'}`}>
-                                  GH₵{(variant.price || product.price).toFixed(2)}
+                                  GH₵{money((variant.price || product.price))}
                                 </span>
                               </button>
                             );

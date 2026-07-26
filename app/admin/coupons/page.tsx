@@ -1,3 +1,4 @@
+import { money } from '@/lib/format-money';
 /* eslint-disable react-hooks/exhaustive-deps */
 'use client';
 
@@ -159,7 +160,7 @@ export default function AdminCouponsPage() {
                       {coupon.type === 'Percentage' ? `${coupon.value}%` : coupon.type === 'Fixed Amount' ? `GH₵ ${coupon.value}` : 'Free Shipping'}
                     </td>
                     <td className="py-4 px-4 text-gray-700 whitespace-nowrap">
-                      {coupon.minPurchase > 0 ? `GH₵ ${coupon.minPurchase.toFixed(2)}` : 'No minimum'}
+                      {coupon.minPurchase > 0 ? `GH₵ ${money(coupon.minPurchase)}` : 'No minimum'}
                     </td>
                     <td className="py-4 px-4">
                       <div className="flex items-center space-x-2">
