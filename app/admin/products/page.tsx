@@ -1,6 +1,7 @@
+'use client';
+
 import { money } from '@/lib/format-money';
 /* eslint-disable react-hooks/exhaustive-deps */
-'use client';
 
 import Link from 'next/link';
 import { useState, useEffect } from 'react';

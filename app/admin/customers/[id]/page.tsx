@@ -1,6 +1,7 @@
+'use client';
+
 import { money } from '@/lib/format-money';
 /* eslint-disable react-hooks/exhaustive-deps */
-'use client';
 
 import { useState, useEffect } from 'react';
 import { supabase } from '@/lib/supabase';
